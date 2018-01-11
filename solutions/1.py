@@ -23,15 +23,28 @@ def threeFiveMultiplesSum_itr(upper_limit):
     total = 0
 
     for num in range(upper_limit):
-        if num % 5 == 0 or num % 3 == 0:
+        if isDivisible(num):
             total += num
 
     return total
 
 
+def threeFiveMultiplesSum_func(upper_limit):
+
+    nums = range(upper_limit)
+    filtered = filter(isDivisible, nums)
+    answer = sum(filtered)
+
+    return answer
+
+
 ###############################################################################
 # Helper functions                                                                          #
 ###############################################################################
+
+def isDivisible(num):
+    return num % 5 == 0 or num % 3 == 0
+
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -49,7 +62,7 @@ def main():
 
     args = get_args()
 
-    answer = threeFiveMultiplesSum_itr(args.limit)
+    answer = threeFiveMultiplesSum_func(args.limit)
 
     print(answer)
 
