@@ -22,18 +22,22 @@ def threeFiveMultiplesSum_itr(upper_limit):
 
     total = 0
 
-    for num in range(1, upper_limit + 1, 1):
-        print(num)
+    for num in range(upper_limit):
+        if num % 5 == 0 or num % 3 == 0:
+            total += num
 
     return total
 
 
 ###############################################################################
-# Helper functions                                                            #
+# Helper functions                                                                          #
 ###############################################################################
 
 def get_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--limit",
+                        type=int,
+                        default=UPPER_LIMIT)
     return parser.parse_args()
 
 
@@ -45,7 +49,7 @@ def main():
 
     args = get_args()
 
-    answer = threeFiveMultiplesSum_itr(UPPER_LIMIT)
+    answer = threeFiveMultiplesSum_itr(args.limit)
 
     print(answer)
 
