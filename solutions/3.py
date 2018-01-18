@@ -18,9 +18,36 @@ NUMBER = 600851475143
 # Problem                                                                     #
 ###############################################################################
 
-def largest_prime_factor(num):
+def is_prime(num):
+    for factor in range(2, num):
+        if divisible(num, factor):
+            return False
+    return True
 
-    return 1
+
+def divisible(a, b):
+    return a % b == 0
+
+
+def next_factor(num, cur):
+    factor = cur + 1
+    while not divisible(num, factor):
+        factor += 1
+    return factor
+
+
+def largest_prime_factor_div(product):
+
+    target = product
+    current = 1
+
+    while not is_prime(target):
+        current = next_factor(target, current)
+
+        if is_prime(current):
+            target //= current
+
+    return target
 
 
 ###############################################################################
@@ -43,7 +70,7 @@ def main():
 
     args = get_args()
 
-    largest_prime_factor(args.number)
+    print(largest_prime_factor_div(args.number))
 
 
 if __name__ == '__main__':
