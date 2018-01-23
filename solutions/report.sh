@@ -1,20 +1,21 @@
 #! /usr/bin/env bash
 
-for filename in *; do
+for filename in $(ls . | sort -n); do
 
 
-    if [[ "$filename" != "report.sh" ]] ; then
+    if [[ "$filename" != "report.sh" ]] &&
+       [[ "$filename" != "common.py" ]] ; then
 
         extension="${filename##*.}"
         name="${filename%.*}"
 
+        echo "Problem: $name"
         if [[ "$extension" == "py" ]] ; then
-
-            echo "Problem: $name"
             python3 $filename
-            echo
-
+        elif [[ "$extension" == "scm" ]] ; then
+            racket -f "$filename" -e "(problem)"
         fi
+        echo
     fi
 
 done
