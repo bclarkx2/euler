@@ -15,3 +15,13 @@ def next_factor(num, cur):
     while not divisible(num, factor):
         factor += 1
     return factor
+
+
+def digit(num, place):
+    divisor = 10 ** place
+
+    if divisor > num:
+        return None
+
+    latter = num % (divisor * 10)
+    return latter // divisor
