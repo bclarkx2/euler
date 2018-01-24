@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+radon cc *.py -a -nb
