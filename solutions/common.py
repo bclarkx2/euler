@@ -25,3 +25,10 @@ def digit(num, place):
 
     latter = num % (divisor * 10)
     return latter // divisor
+
+
+def all_digits(num):
+    place = 0
+    while 10 ** place < num:
+        yield digit(num, place)
+        place += 1
