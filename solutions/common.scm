@@ -26,3 +26,9 @@
   )
  )
 )
+
+(define divisible
+ (lambda (a b)
+  (zero? (modulo a b))
+ )
+)
