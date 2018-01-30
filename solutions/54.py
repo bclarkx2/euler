@@ -318,17 +318,18 @@ class HighCard(Hand):
 class Problem54(Euler):
 
     def __init__(self):
-        super().__init__("arg", 0)
+        super().__init__("test", 0)
 
     def solve(self):
 
-        test()
-
-        path = get_resource_file("p054_poker.txt")
-        game_strings = read_games(path)
-        games = [Game.make(s) for s in game_strings]
-        wins = sum(g.play() for g in games)
-        return wins
+        if self.test:
+            test()
+        else:
+            path = get_resource_file("p054_poker.txt")
+            game_strings = read_games(path)
+            games = [Game.make(s) for s in game_strings]
+            wins = sum(g.play() for g in games)
+            return wins
 
 
 ###############################################################################
