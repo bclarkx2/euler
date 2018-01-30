@@ -129,3 +129,19 @@ def get_resource_file(filename):
     resource_dir = os.path.join(parent_dir, "resources")
     resource_path = os.path.join(resource_dir, filename)
     return resource_path
+
+
+def factors(num):
+    return factor(num).union({1})
+
+
+def sum_of_factors(num):
+    return sum(factors(num))
+
+
+def all_factor_sums(lim):
+    res = {}
+    for n in range(1, lim):
+        if n not in res:
+            res[n] = sum_of_factors(n)
+    return res

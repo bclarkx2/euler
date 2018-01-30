@@ -5,28 +5,12 @@
 ###############################################################################
 
 from common import Euler
-from common import factor
+from common import all_factor_sums
 
 
 ###############################################################################
 # Problem                                                                     #
 ###############################################################################
-
-def factors(num):
-    return factor(num).union({1})
-
-
-def d(num):
-    return sum(factors(num))
-
-
-def d_sums(lim):
-    res = {}
-    for n in range(1, lim):
-        if n not in res:
-            res[n] = d(n)
-    return res
-
 
 def amicables(ds):
     res = []
@@ -43,11 +27,9 @@ class Problem21(Euler):
         super().__init__("lim", 10000)
 
     def solve(self):
-        ds = d_sums(self.lim)
+        ds = all_factor_sums(self.lim)
         amics = amicables(ds)
-        print(ds)
-        print(amics)
-        return sum(amicables(ds))
+        return sum(amics)
 
 
 ###############################################################################
