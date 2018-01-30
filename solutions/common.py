@@ -145,3 +145,10 @@ def all_factor_sums(lim):
         if n not in res:
             res[n] = sum_of_factors(n)
     return res
+
+
+def fib_gen():
+    seq = [1, 1]
+    while True:
+        yield seq[-1]
+        seq.append(seq[-1] + seq[-2])
