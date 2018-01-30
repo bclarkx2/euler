@@ -4,6 +4,7 @@
 ###############################################################################
 
 import argparse
+import os
 from itertools import combinations
 from functools import reduce
 from operator import mul
@@ -119,3 +120,12 @@ def factor(num):
             factors.add(new_factor)
 
     return factors
+
+
+def get_resource_file(filename):
+    current_file = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file)
+    parent_dir = os.path.dirname(current_dir)
+    resource_dir = os.path.join(parent_dir, "resources")
+    resource_path = os.path.join(resource_dir, filename)
+    return resource_path
