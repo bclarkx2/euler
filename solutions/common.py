@@ -80,9 +80,18 @@ def digit(num, place):
 
 def all_digits(num):
     place = 0
-    while 10 ** place < num:
+    while 10 ** place <= num:
         yield digit(num, place)
         place += 1
+
+
+def all_digits_rev_lst(num):
+    digits = []
+    place = 0
+    while 10 ** place <= num:
+        digits.insert(0, digit(num, place))
+        place += 1
+    return digits
 
 
 def next_prime_factor(num, cur):
@@ -152,3 +161,41 @@ def fib_gen():
     while True:
         yield seq[-1]
         seq.append(seq[-1] + seq[-2])
+
+
+def prime_gen(start, number=float('inf')):
+
+    cur = start
+    num_primes = 0
+    while num_primes < number:
+        while not is_prime(cur):
+            cur += 1
+        num_primes += 1
+        yield cur
+        cur += 1
+
+
+def prime_gen_sieve(ceiling):
+
+    nums = list(range(2, ceiling))
+    primes = []
+
+    while nums:
+
+        current = nums.pop(0)
+        yield current
+
+        mult = 0
+        while mult < ceiling:
+            mult += current
+            if mult in nums:
+                nums.remove(mult)
+
+    return primes
+
+
+def digits_to_num(digits):
+    num = 0
+    for place, digit in enumerate(reversed(digits)):
+        num += (10 ** place) * digit
+    return num
