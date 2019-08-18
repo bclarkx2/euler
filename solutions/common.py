@@ -199,3 +199,6 @@ def digits_to_num(digits):
     for place, digit in enumerate(reversed(digits)):
         num += (10 ** place) * digit
     return num
+
+def mult_reduce(lst):
+    return reduce(mul, lst, 1)
